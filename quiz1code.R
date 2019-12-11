@@ -136,6 +136,7 @@ result <- microbenchmark(
 ) 
 result
 
+## Plot the performance
 ggplot2::autoplot(result)
 boxplot(result)
 
