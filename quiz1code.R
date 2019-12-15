@@ -34,18 +34,22 @@ IDHousing2006_B[, .N, by = propertyFlag]
 
 ## download data 
 ## Downloaded file is not valid for unknown reason. 
-## Mannually download the excel data and save it to the directory as "GasProgram_M". 
+## Mannually download the excel data and save it to the directory as "GasProgram_M".
+
 fileUrl2 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx"
 download.file(fileUrl2, destfile = "GasProgram.xlsx")
-dateDownloaded_gas <- date()
+dateDownloaded_gas <- date() 
+## all the coding works. The excel file is invalid. 
 
+# Approach 1 
 ## xlsx package does not work for rjava failure, fix this later
-install.packages("xlsx")
+install.packages("xlsx") ## package was successfully loaded to R after installing java
 library(xlsx)
-dat <- read.xlsx("GasProgram.xlsx", sheetIndex = 1, colIndex = 7:15, rowIndex = 18:23)
+list.files()
+dat_mo <- read.xlsx("GasProgram_M.xlsx", sheetIndex = 1, colIndex = 7:15, rowIndex = 18:23)
 
 
-
+# Approach 2 
 ## read_excel from readxl package for the mannually downloaded excel data 
 install.packages("readxl")
 install.packages("cellranger")
@@ -95,7 +99,7 @@ zip_df <- data.table(zip_3, keep.rownames = FALSE)
 zip_df[, .N, zip_3 == 21231]
 
 
-?data.table
+
 
 # Question 5 compare the systime for the following command 
 
